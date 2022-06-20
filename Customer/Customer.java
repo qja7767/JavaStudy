@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
+	public static void main(String[] args) {
+		System.out.println("test");
+	}
 	private String name;
 	private String ssn;
 	private String phone;
 	private String customerID;
 	private String password;
 	private List<Account> accountList;
-	
 	public String getName() {
 		return name;
 	}

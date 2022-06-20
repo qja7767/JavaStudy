@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 public class CustomerServiceImpl implements CustomerService {
-	private Map<String, Customer> map = new HashMap<String, Customer>();	
+	private Map<String, Customer> map = new HashMap<>();	
 	
 	public void addCustomer(Customer customer) {
 		if(!map.containsKey(customer.getSsn())) {
 			map.put(customer.getSsn(), customer);			
-		}	
+		}
 	}
 	
 	public Customer getCustomerBySsn(String ssn) {
