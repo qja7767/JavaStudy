@@ -1,4 +1,4 @@
-package com.varxyz.banking.domain;
+package mod001;
 
 public class CheckingAccount extends Account {
 	private double overdraftAmount;

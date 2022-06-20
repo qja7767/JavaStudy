@@ -1,4 +1,4 @@
-package com.varxyz.banking.domain;
+package mod001;
 
 import java.util.Collection;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.varxyz.banking.domain;
+package mod001;
 
 import java.util.ArrayList;
 import java.util.Collection;

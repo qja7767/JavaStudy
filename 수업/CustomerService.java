@@ -1,4 +1,4 @@
-package com.varxyz.banking.domain;
+package mod001;
 /* 1. 주요 메소드
  * .addCustomer() : 신규 고객추가
  * .getCustomerBySsn : 주민번호로 고객 조회

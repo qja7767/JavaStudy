@@ -1,4 +1,4 @@
-package com.varxyz.banking.domain;
+package mod001;
 /**
  * "8"+"0"
  * @author Administrator
