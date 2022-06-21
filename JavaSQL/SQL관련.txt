@@ -1,0 +1,46 @@
+SQL(Structured Query Language)
+
+mysql -u root -p
+
+1.DQL(Data Query Language)
+ - SELECT
+
+2.DML(Data Manipulation Language
+ - INSERT
+ - UPDATE
+ - DELETE
+
+3.DDL(Data  Definition Language)
+ - CREATE
+ - ALTER
+ - DROP
+ - TRUNCATE
+ - RENAME
+
+4.DCL(Data Control Language)
+ - GRANT 권한부여
+ - REVOKE 권한해제
+
+5.TCL(Transaction Control Language)
+ - COMMIT
+ - ROLLBACK
+
+show databases;
+use mysql
+select host, user from user;
+
+create user 'jv250'@localhost identified by 'jv250';
+
+create database jv250 default character set utf8;
+
+grant all privileges on jv250.* to 'jv250'@localhost with grant option;
+-> 데이터베이스 'jv250'을 사용자 'jv250'가 사용하겠다 권한부여
+
+flush privileges;
+
+CREATE TABLE Sample10 (
+	no			INT(11)		DEFAULT NULL,
+	name		VARCHAR(20) DEFAULT NULL,
+	birthday	DATE		DEFAULT NULL,
+	address		VARCHAR(40)	DEFAULT NULL
+);
