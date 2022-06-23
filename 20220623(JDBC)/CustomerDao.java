@@ -39,11 +39,12 @@ public class CustomerDao {
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
 					Customer c = new Customer();
-					c.setCid(rs.getLong("cid"));
+//					c.setCid(rs.getLong("cid"));
 					c.setName(rs.getString("name"));
 					c.setSsn(rs.getString("ssn"));
 					c.setPhone(rs.getString("phone"));
 					c.setCustomerID(rs.getString("customerId"));
+					c.setPassword(rs.getString("passwd"));
 					customerList.add(c);
 				}
 			}finally {
@@ -76,11 +77,12 @@ public class CustomerDao {
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
 					c = new Customer();					
-					c.setCid(rs.getLong("cid"));
+//					c.setCid(rs.getLong("cid"));
 					c.setName(rs.getString("name"));
 					c.setSsn(rs.getString("ssn"));
 					c.setPhone(rs.getString("phone"));
-					c.setCustomerID(rs.getString("customerId"));					
+					c.setCustomerID(rs.getString("customerId"));
+					c.setPassword(rs.getString("passwd"));
 				}
 			}finally {
 				rs.close();
@@ -90,7 +92,28 @@ public class CustomerDao {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}		
-		return null;
+		return c;
 	}
-
+	/**
+	 * 신규 고객 등록
+	 * @param customer			등록할 고객정보
+	 */
+	public void addCustomer(Customer customer) {
+		String sql = "INSERT INTO Customer(name, ssn, phone, customerId, passwd) "
+				+ " VALUES(?, ?, ?, ?, ?)";
+		try {
+			Connection con = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, customer.getName());
+			pstmt.setString(2, customer.getSsn());;
+			pstmt.setString(3, customer.getPhone());
+			pstmt.setString(4, customer.getCustomerID());
+			pstmt.setString(5, customer.getPassword());
+			pstmt.executeUpdate();
+			con.close();
+			System.out.println("INSERTED....");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

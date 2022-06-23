@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public interface CustomerService {
+public interface AccountService {
 	void addCustomer(Customer customer);
 	Customer getCustomerBySsn(String ssn);
 	Collection<Customer> getAllCustomers();
