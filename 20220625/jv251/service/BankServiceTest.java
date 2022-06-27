@@ -10,31 +10,34 @@ public class BankServiceTest {
 	public static void main(String[] args) {
 		BankService service = BankService.getInstance();
 		String name = "가후";
-		String ssn = "870123-2214067";
+		String ssn = "901213-2222222";
 		String phone = "010-4434-3232";
 		String userId = "framework";
 		String passwd = "1111";
 		
-		//1.신규 고객 등록
-		service.addCustomer(name, ssn, phone, userId, passwd);
-		try {
-			//2. SavingsAccount 생성 
-			service.addSavingsAccount(7000.0, 0.4, ssn);			
-		} catch ( CustomerNotFoundException e) {
-			e.printStackTrace();
-		}
-		//3.고객 등록 확인
-		Customer customer = service.getCustomerBySsn(ssn);
-		System.out.println(customer);
-		
-		//고객 계좌 목록 확인
-		List<Account> myList = service.getAccountBySsn(ssn);
-		
+		if ( true ) {
+			//1.신규 고객 등록
+			service.addCustomer(name, ssn, phone, userId, passwd);
+			try {
+				//2. SavingsAccount 생성 
+				service.addSavingsAccount(7000.0, 0.4, ssn);			
+			} catch ( CustomerNotFoundException e) {
+				e.printStackTrace();
+			}
+			//3.고객 등록 확인
+			Customer customer = service.getCustomerBySsn(ssn);
+			System.out.println(customer);
+			
+			//고객 계좌 목록 확인
+			
 //		for( Account account : customer.getAccountList() ) {
-//			System.out.println(customer);
+//			System.out.println(customer);			
+		}
+				
 		
+		List<Account> myList = service.getAccountBySsn(ssn);
 		for( Account account : myList ) {
-			System.out.println(account);		
+			System.out.println(account);
 		}
 		
 	}

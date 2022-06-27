@@ -19,8 +19,7 @@ public class SavingsAccount extends Account {
 	}
 	public SavingsAccount(String accountNum, double balance) {
 		this(accountNum, balance, 0.0); //DEFAULT_INTEREST_RATE
-	}
-	
+	}	
 	public SavingsAccount(String accountNum, double balance, double interestRate) {
 		super(accountNum, balance);
 		this.interestRate = interestRate;

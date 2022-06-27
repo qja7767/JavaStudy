@@ -23,9 +23,9 @@ public class BankService {
 	private AccountService accountService;
 	
 	private BankService() {
-		init();
+		init();		
 	}
-	
+		
 	public void init() {
 		customerService = new CustomerService(new CustomerDao());
 		accountService = new AccountService(new AccountDao());
@@ -44,7 +44,7 @@ public class BankService {
 			throw new DuplicatedEntityException(ssn + " is duplicated.");			
 		}
 	}
-	
+
 	public Customer getCustomerBySsn(String ssn) {
 		return customerService.getCustomerBySsn(ssn);
 	}
@@ -60,6 +60,7 @@ public class BankService {
 		account.setBalance(balance);
 		account.setAccountType(BankService.SA);
 		account.setInterestRate(interestRate);
+		
 		Customer customer = customerService.getCustomerBySsn(ssn);
 		if(customer != null) {
 			account.setCustomer(customer);
@@ -85,7 +86,6 @@ public class BankService {
 			throw new CustomerNotFoundException(ssn + " not found");
 		}
 	}
-		
 	
 	public boolean isCustomer(String ssn) {
 		return customerService.getCustomerBySsn(ssn) == null ? false : true;

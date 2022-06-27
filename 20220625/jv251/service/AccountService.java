@@ -16,7 +16,6 @@ public class AccountService {
 		accountDao.addAccount(account);
 	}
 	
-	
 	public List<Account> getAccountBySsn(String ssn) {
 		return accountDao.findAccountsBySsn(ssn);
 	}

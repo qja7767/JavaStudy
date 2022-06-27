@@ -103,9 +103,48 @@ public class AccountDao {
 	 * 등록된 모든 계좌 목록 조회
 	 * @return
 	 */
-//	public List<Customer> findAllAccounts() {
-//		String sql = "SELECT * FROM Account";
-//		List<Account> accountList = new ArrayList<Account>();
+	public List<Customer> findAllAccounts() {
+		String sql = "SELECT * FROM Account";
+		List<Account> accountList = new ArrayList<Account>();
+		try {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			Account account = null;
+			try {
+				con = DataSourceManager.getConnection();
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					if ( rs.getString("accountType").charAt(0) == 'S' ) {
+						account = new SavingsAccount(sql, 0);
+						((SavingsAccount)account).setInterestRate(
+								rs.getDouble("interestRate"));
+					}else {
+						account = new CheckingAccount();
+						((CheckingAccount)account).setOverdraftAmount(
+								rs.getDouble("overdraft"));
+					}
+					account.setAid(rs.getLong("aid"));
+					account.setAccountNum(rs.getString("accountNum"));
+					account.setBalance(rs.getDouble("balance"));
+					account.setCustomer(new Customer(rs.getString("name"),
+							rs.getString("ssn"), rs.getString("phone")));
+					account.setRegDate(rs.getTimestamp("regDate"));
+					account.setAccountType(rs.getString("accountType").charAt(0));
+					accountList.add(account);
+				}
+			} finally {
+				DataSourceManager.close(rs,  pstmt,  con);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+//	public void withdraw(Account account) {
+//		String sql = "UPDATE Account set balance = ? where ssn = ?";
 //		try {
 //			Connection con = null;
 //			PreparedStatement pstmt = null;
@@ -113,18 +152,22 @@ public class AccountDao {
 //			try {
 //				con = DataSourceManager.getConnection();
 //				pstmt = con.prepareStatement(sql);
-//				rs = pstmt.executeQuery();
-//				while(rs.next()) {
-//					Account c = new Account(sql, 0);
-//					accountList.add(c);
+//				pstmt.setString(1, account.getAccountNum());
+//				pstmt.setDouble(2, account.getBalance());
+//				if (account instanceof SavingsAccount) {
+//					SavingsAccount sa = (SavingsAccount)account;
+//				}else {
+//					CheckingAccount ca = (CheckingAccount)account;
 //				}
+//				pstmt.executeUpdate();
 //			} finally {
-//				DataSourceManager.close(rs,  pstmt,  con);
+//				DataSourceManager.close(pstmt, con);
 //			}
-//		} catch (Exception e) {
+//			System.out.println("balance UPDATE...\n");
+//		} catch (SQLException e) {
 //			e.printStackTrace();
 //		}
-//		return null;
 //	}
+	
 }
 
