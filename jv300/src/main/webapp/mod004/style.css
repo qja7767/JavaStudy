@@ -1,0 +1,23 @@
+@charset "UTF-8";
+body {
+	background : blue;
+	opacity: 1;
+}
+
+.container {
+	background: skyblue;
+	font-size: 700;
+	color: white;
+	width: 1320px;
+}
+
+.input {
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.input_button {
+	margin-left: 10px;
+	background: white;
+	padding: 8px;
+}
