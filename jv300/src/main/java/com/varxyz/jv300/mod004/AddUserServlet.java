@@ -18,7 +18,6 @@ public class AddUserServlet extends HttpServlet {
     private static final String DEFAULT_SSN = "DEFAULT";
     private static final String DEFAULT_EMAIL = "DEFAULT";
     private static final String DEFAULT_EMAIL2 = "DEFAULT";
-    private static final String DEFAULT_CONCERNS = "DEFAULT"; 
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -57,7 +56,8 @@ public class AddUserServlet extends HttpServlet {
 		out.println("<h1>USER INFO</h1>");
 		out.println("<ul>");
 		out.println("<li>아이디 : " + userId + "</li>");
-		out.println("<li>비밀번호 : " + passwd + "</li>");
+		
+		out.println("<li>비밀번호 : " + masking(passwd) + "</li>");
 		out.println("<li>주민등록번호 : " + ssn + "</li>");
 		out.println("<li>이메일 : " + email + "@" + email2 + "</li>");
 		for(String concern2 : concerns) {
@@ -71,8 +71,16 @@ public class AddUserServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");//POST할때 한글깨짐 임시방편(첫줄)
 		doGet(request, response);
+	}
+	
+	public static String masking(String number) {
+		char[] ch = number.toCharArray();
+		for( int i = 0; i < ch.length; i ++ ) {
+			ch[i] = '*';
+		}
+		return String.valueOf(ch);
 	}
 
 }

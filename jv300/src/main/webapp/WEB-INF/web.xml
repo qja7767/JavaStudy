@@ -28,24 +28,13 @@
   	<init-param>
   		<param-name>season-list</param-name>
   		<param-value>Spring, Summer, Fall, Winter</param-value>
-  	</init-param>
-  	  	  
+  	</init-param> 
   </servlet>
   
-  <servlet>
-  	<description>
-  	</description>
-  	<display-name>FormBasedHelloServlet</display-name>
-  	<servlet-name>FormBasedHelloServlet</servlet-name>
-  	<servlet-class>com.varxyz.jv300.mod004.FormBasedHelloServlet</servlet-class>
+    <servlet>
+    <display-name>AddUserServlet</display-name>
+   <servlet-name>AddUserServlet</servlet-name>  	
+  	<servlet-class>com.varxyz.jv300.mod006.AddUserServlet</servlet-class>  	
   </servlet>
-  <servlet>
-  	<description>
-  	</description>
-  	<display-name>FormBasedHelloServlet1</display-name>
-  	<servlet-name>FormBasedHelloServlet1</servlet-name>
-  	<servlet-class>com.varxyz.jv300.mod003.FormBasedHelloServlet</servlet-class>
-  </servlet>
-  
 
 </web-app>
