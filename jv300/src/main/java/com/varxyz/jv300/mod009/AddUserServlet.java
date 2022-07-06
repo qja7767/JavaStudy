@@ -66,6 +66,7 @@ public class AddUserServlet extends HttpServlet {
 		
 		//3. 비즈니스 서비스 호출
 		userService.addUser(user);
+//		userService.findUser(user);
 		request.setAttribute("user", user);
 		
 		//4. NextPage

@@ -2,7 +2,9 @@ package com.varxyz.jv300.mod009;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao {
@@ -36,10 +38,33 @@ public class UserDao {
 		}
 	}
 	
-	public List<User> findUser() {
+	public List<User> findAllUser() {
 		String sql = "SELECT * FROM UserList";
-		List<User> userList = new
-		
+		List<User> userList = new ArrayList<User>();
+		try {
+			Connection con = null;
+			PreparedStatement pstmt = null;	
+			ResultSet rs = null;
+			try {
+				con = datasource.getConnection();
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					User c = new User();
+					c.setUserId(rs.getString("userId"));
+					c.setPasswd(rs.getString("passwd"));
+					c.setUserName(rs.getString("userName"));
+					c.setSsn(rs.getString("ssn"));
+					c.setEmail(rs.getString("email"));
+					c.setAddr(rs.getString("addr"));
+					userList.add(c);
+				}
+			}finally {
+				datasource.close(rs, pstmt, con);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 		return userList;
 	}
 	
