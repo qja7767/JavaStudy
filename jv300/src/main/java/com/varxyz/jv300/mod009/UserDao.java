@@ -1,0 +1,46 @@
+package com.varxyz.jv300.mod009;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
+public class UserDao {
+	private DataSource datasource;
+	public UserDao() {
+		NamingService ns = NamingService.getInstance();
+		datasource = (DataSource)ns.getAttribute("dataSource");
+	}
+	
+	public void plusUser(User user) {
+		String sql = "INSERT INTO UserList (userId, passwd, userName, ssn, email, addr)"
+				 + " VALUES (?, ?, ?, ?, ?, ?)";
+		try {		
+			Connection con = null;
+			PreparedStatement pstmt = null;	
+			try {
+				con = datasource.getConnection();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user.getUserId());
+				pstmt.setString(2, user.getPasswd());
+				pstmt.setString(3, user.getUserName());
+				pstmt.setString(4, user.getSsn());
+				pstmt.setString(5, user.getEmail());
+				pstmt.setString(6, user.getAddr());
+				pstmt.executeUpdate();
+			} finally {
+				datasource.close(pstmt, con);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public List<User> findUser() {
+		String sql = "SELECT * FROM UserList";
+		List<User> userList = new
+		
+		return userList;
+	}
+	
+}
