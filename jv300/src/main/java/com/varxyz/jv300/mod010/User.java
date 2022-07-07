@@ -1,4 +1,4 @@
-package com.varxyz.jv300.mod009;
+package com.varxyz.jv300.mod010;
 
 import java.io.Serializable;
 
@@ -62,5 +62,6 @@ public class User implements Serializable {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
+	
 	
 }

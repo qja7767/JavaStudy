@@ -76,8 +76,7 @@ public class AddUserServlet extends HttpServlet {
 		request.setAttribute("ssn", ssn);
 		
 		dispatcher = request.getRequestDispatcher("/mod009/success.jsp");
-		dispatcher.forward(request, response);
-		
+		dispatcher.forward(request, response);	
 	}
 		
 }

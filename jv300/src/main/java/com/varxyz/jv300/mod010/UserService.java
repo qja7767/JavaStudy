@@ -1,4 +1,4 @@
-package com.varxyz.jv300.mod009;
+package com.varxyz.jv300.mod010;
 
 import java.util.List;
 
@@ -27,6 +27,11 @@ public class UserService{
 	
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
+	}
+
+	public boolean isValidUser(String userId, String passwd) {
+
+		return false;
 	}
 	
 	
