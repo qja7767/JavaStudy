@@ -16,7 +16,7 @@ public class MyPageServlet extends HttpServlet {
 	private UserService userService;
 	
 	public void init() {
-		userService = new UserService();
+		userService = new UserService(new UserDao());
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -2,5 +2,5 @@
 <%@page import="java.net.URLDecoder" %>
 
 <div id="banner">
-	<a></a>
+	<h4><%=request.getParameter("subtitle") %></h4>
 </div>

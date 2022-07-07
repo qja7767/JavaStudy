@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h3>My Page</h3>
+	${userId}님
 	<a href='<c:url value="/mod010/logout"/>'>로그아웃</a>
 </body>
 </html>

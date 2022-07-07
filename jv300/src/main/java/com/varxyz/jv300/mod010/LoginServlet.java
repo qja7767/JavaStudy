@@ -15,11 +15,11 @@ public class LoginServlet extends HttpServlet {
 	private UserService userService;
 	
 	public void init() {
-		userService = new UserService();
+		userService = new UserService(new UserDao());
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException {	
 		request.getRequestDispatcher("login.jsp").forward(request, response);		
 	}
 
@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 		//요청 파라메터 검증
 		//~....
 		if(!userService.isValidUser(userId, passwd)) {
-			request.getRequestDispatcher("login.jsp").forward(request, response);;
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 			return;
 		}
 		
