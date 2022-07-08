@@ -14,6 +14,7 @@ public class UserDao {
 		dataSource = (DataSource)ns.getAttribute("dataSource");
 	}
 	
+	//ADD_USER
 	public void plusUser(User user) {
 		String sql = "INSERT INTO UserList (userId, passwd, userName, ssn, email, addr)"
 				 + " VALUES (?, ?, ?, ?, ?, ?)";
@@ -38,6 +39,49 @@ public class UserDao {
 		}
 	}
 	
+	//UPDATE_USER
+	public void updateUser(User user) { 
+		String sql = "UPDATE UserList SET passwd = ?, userName = ? WHERE userId = ?";
+		try {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = dataSource.getConnection();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user.getPasswd());
+				pstmt.setString(2, user.getUserName());
+				pstmt.setString(3, user.getUserId());
+				pstmt.executeUpdate();
+			} finally {
+				dataSource.close(rs, pstmt, con);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//DELETE_USER by userId
+//	public void deleteUser(User user) {
+//		String sql = "DELETE FROM UserList WHERE userId = ?";		
+//		try {
+//			Connection con = null;
+//			PreparedStatement pstmt = null;
+//			ResultSet rs = null;
+//			try {
+//				con = dataSource.getConnection();
+//				pstmt = con.prepareStatement(sql);
+//				pstmt.setString(1, user.getUserId());
+//				pstmt.executeUpdate();
+//			} finally {
+//				dataSource.close(rs, pstmt, con);
+//			}
+//		} catch ( SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
+	
+	//FIND_USER
 	public List<User> findAllUser() {
 		String sql = "SELECT * FROM UserList";
 		List<User> userList = new ArrayList<User>();

@@ -10,6 +10,11 @@
 <body>
 	<h3>My Page</h3>
 	${userId}님
-	<a href='<c:url value="/mod010/logout"/>'>로그아웃</a>
+	<a href='<c:url value="/mod010/logout"/>'>로그아웃</a><br>
+	<label>Last Access Time : </label> ${lastAccessTime}
+		<a href='<c:url value="/mod010/logout"/>'>로그아웃</a><br>
+		<a href='<c:url value="/mod010/logout"/>'>로그아웃</a><br>
+		<a href='<c:url value="/mod010/logout"/>'>로그아웃</a><br>
+		<a href='<c:url value="/mod010/logout"/>'>로그아웃</a><br>		
 </body>
 </html>

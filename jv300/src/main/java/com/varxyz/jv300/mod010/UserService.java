@@ -17,6 +17,10 @@ public class UserService{
 		userDao.plusUser(user);
 	}
 	
+	public void updateUser(User user) {
+		userDao.updateUser(user);
+	}
+	
 	public List<User> findUser() {
 		return userDao.findAllUser();
 	}
