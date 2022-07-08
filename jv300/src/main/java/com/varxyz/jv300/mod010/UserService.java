@@ -21,6 +21,10 @@ public class UserService{
 		userDao.updateUser(user);
 	}
 	
+	public void deleteUserByUserId(User user) {
+		userDao.deleteUserByUserId(user);
+	}
+	
 	public List<User> findUser() {
 		return userDao.findAllUser();
 	}

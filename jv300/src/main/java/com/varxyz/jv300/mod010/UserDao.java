@@ -62,24 +62,24 @@ public class UserDao {
 	}
 	
 	//DELETE_USER by userId
-//	public void deleteUser(User user) {
-//		String sql = "DELETE FROM UserList WHERE userId = ?";		
-//		try {
-//			Connection con = null;
-//			PreparedStatement pstmt = null;
-//			ResultSet rs = null;
-//			try {
-//				con = dataSource.getConnection();
-//				pstmt = con.prepareStatement(sql);
-//				pstmt.setString(1, user.getUserId());
-//				pstmt.executeUpdate();
-//			} finally {
-//				dataSource.close(rs, pstmt, con);
-//			}
-//		} catch ( SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
+	public void deleteUserByUserId(User user) {
+		String sql = "DELETE FROM UserList WHERE userId = ?";		
+		try {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = dataSource.getConnection();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user.getUserId());
+				pstmt.executeUpdate();
+			} finally {
+				dataSource.close(rs, pstmt, con);
+			}
+		} catch ( SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	//FIND_USER
 	public List<User> findAllUser() {
@@ -136,5 +136,7 @@ public class UserDao {
 		}			
 		return bool;		
 	}
+	
+	
 	
 }
