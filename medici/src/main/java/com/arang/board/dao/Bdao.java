@@ -62,7 +62,7 @@ public class Bdao {
 	public void write(String bName, String bTitle, String bContent){
 		String sql ="INSERT INTO board(bId, bName, bTitle, bContent, bHit,"
 				+ " bGroup, bStep, bIndent) "
-				+ "VALUES(0,?,?,?,0,0,0,0)";
+				+ "VALUES(1,?,?,?,1,1,1,1)";
 		try {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -209,8 +209,8 @@ public class Bdao {
 
 	public void reply(String bid, String bName, String bTitle,
 			String bContent, String bGroup, String bStep, String bIndent){
-		String sql = "INSERT INTO board(bId, bName, bTitle, bContent, bgroup, bStep, bIndent)"
-				+ "VALUES(board_seq.nextval, ?,?,?,?,?,?)";
+		String sql = "INSERT INTO board(bName, bTitle, bContent, bgroup, bStep, bIndent)"
+				+ "VALUES(?,?,?,?,?,?)";
 		try {
 			replyForm(bGroup, bStep);		
 			Connection con = null;

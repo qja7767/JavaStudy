@@ -12,6 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.arang.board.cmd.BCommand;
 import com.arang.board.cmd.BListCommand;
 import com.arang.board.cmd.BWriteCommand;
+import com.arang.board.cmd.BDelcommand;
+import com.arang.board.cmd.BModifyCommand;
+import com.arang.board.cmd.BReplyCommand;
+import com.arang.board.cmd.BReplyViewCommand;
+import com.arang.board.cmd.BViewCommand;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -56,6 +61,26 @@ public class FrontController extends HttpServlet {
 			command = new BListCommand();
 			command.execute(request, response);
 			viewPage = "list.jsp";
+		}else if(cmd.equals("/view.do")){
+			command = new BViewCommand();
+			command.execute(request, response);
+			viewPage = "view.jsp";
+		}else if(cmd.equals("/modify.do")){
+			command = new BModifyCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
+		}else if(cmd.equals("/delete.do")){
+			command = new BDelcommand();
+			command.execute(request, response);
+			viewPage = "list.do";
+		}else if(cmd.equals("/replyView.do")){
+			command = new BReplyViewCommand();
+			command.execute(request, response);
+			viewPage = "reply_form.jsp";
+		}else if(cmd.equals("/reply.do")){
+			command = new BReplyCommand();
+			command.execute(request,response);
+			viewPage ="list.do";
 		}	
 		RequestDispatcher dispat = request.getRequestDispatcher(viewPage);
 		dispat.forward(request, response);

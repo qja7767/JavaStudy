@@ -63,7 +63,7 @@ CREATE TABLE board(
 	bHit 		INT(4) 			DEFAULT NULL,
 	bGroup 		INT(4)			DEFAULT NULL,
 	bStep		INT(4)			DEFAULT NULL,
-	bIndent 	INT(4)			DEFAULT NULL
+	bIndent 	INT(10)			DEFAULT 1
 );
 
 SELECT * FROM board;

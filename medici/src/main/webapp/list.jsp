@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@page isELIgnored="false" %>
 <%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -21,11 +22,11 @@
   		<td align="center">날짜</td>
   		<td align="center">조회</td>  		
   	</tr>
-  	<c:forEach items="${list}"  var="dto"> 
+  	<c:forEach items="${list}" var="dto"> 
   	<tr>
   		<td>${dto.bId}</td>
   		<td>${dto.bName}</td>
-  		<td>
+	<td>
   		    <c:forEach begin ="1" end="${dto.bIndent}"></c:forEach>
   			<a href ="view.do?bId=${dto.bId}">${dto.bTitle}</a>
   		</td>
