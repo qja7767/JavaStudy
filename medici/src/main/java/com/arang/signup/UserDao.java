@@ -16,9 +16,9 @@ public class UserDao {
 	
 	//ADD_USER
 	public void plusUser(User user) {
-		String sql = "INSERT INTO UserList (userId, passwd, userName, ssn, email, addr)"
+		String sql = "INSERT INTO UserSignUp (userId, passwd, koreanName, ssn, email, addr)"
 				 + " VALUES (?, ?, ?, ?, ?, ?)";
-		try {		
+		try {
 			Connection con = null;
 			PreparedStatement pstmt = null;	
 			try {
@@ -26,7 +26,7 @@ public class UserDao {
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, user.getUserId());
 				pstmt.setString(2, user.getPasswd());
-				pstmt.setString(3, user.getUserName());
+				pstmt.setString(3, user.getKoreanName());
 				pstmt.setString(4, user.getSsn());
 				pstmt.setString(5, user.getEmail());
 				pstmt.setString(6, user.getAddr());
@@ -41,7 +41,7 @@ public class UserDao {
 	
 	//UPDATE_USER
 	public void updateUser(User user) { 
-		String sql = "UPDATE UserList SET passwd = ?, userName = ? WHERE userId = ?";
+		String sql = "UPDATE UserSignUp SET passwd = ?, userName = ? WHERE userId = ?";
 		try {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -50,7 +50,7 @@ public class UserDao {
 				con = dataSource.getConnection();
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, user.getPasswd());
-				pstmt.setString(2, user.getUserName());
+				pstmt.setString(2, user.getKoreanName());
 				pstmt.setString(3, user.getUserId());
 				pstmt.executeUpdate();
 			} finally {
@@ -63,7 +63,7 @@ public class UserDao {
 	
 	//DELETE_USER by userId
 	public void deleteUserByUserId(User user) {
-		String sql = "DELETE FROM UserList WHERE userId = ?";		
+		String sql = "DELETE FROM UserSignUp WHERE userId = ?";		
 		try {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -71,7 +71,7 @@ public class UserDao {
 			try {
 				con = dataSource.getConnection();
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, user.getUserId());
+				pstmt.setString(1, user.getKoreanName());
 				pstmt.executeUpdate();
 			} finally {
 				dataSource.close(rs, pstmt, con);
@@ -83,7 +83,7 @@ public class UserDao {
 	
 	//FIND_USER
 	public List<User> findAllUser() {
-		String sql = "SELECT * FROM UserList";
+		String sql = "SELECT * FROM UserSignUp";
 		List<User> userList = new ArrayList<User>();
 		try {
 			Connection con = null;
@@ -97,7 +97,7 @@ public class UserDao {
 					User c = new User();
 					c.setUserId(rs.getString("userId"));
 					c.setPasswd(rs.getString("passwd"));
-					c.setUserName(rs.getString("userName"));
+					c.setKoreanName(rs.getString("koreanName"));
 					c.setSsn(rs.getString("ssn"));
 					c.setEmail(rs.getString("email"));
 					c.setAddr(rs.getString("addr"));
@@ -113,7 +113,7 @@ public class UserDao {
 	}
 	
 	public boolean isValidUser(String userId, String passwd) {
-		String sql = "SELECT * FROM userList WHERE userId=? AND passwd=?";
+		String sql = "SELECT * FROM UserSignUp WHERE userId=? AND passwd=?";
 		boolean bool = true;
 		try {
 			Connection con = null;
@@ -137,6 +137,27 @@ public class UserDao {
 		return bool;		
 	}
 	
-	
+	public int idCheck(String id) {
+		String sql = "SELECT userId FROM UserSignUp WHERE userId = ?";	
+		int value = 0;			
+		try {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = dataSource.getConnection();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.executeQuery();
+				if(rs.next()) value = 1;
+			} finally {
+				dataSource.close(rs, pstmt, con);
+			} 
+		} catch ( SQLException e) {
+			e.printStackTrace();
+		} 
+		return value;
+	}
+
 	
 }

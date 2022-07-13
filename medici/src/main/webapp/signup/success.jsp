@@ -12,14 +12,14 @@ pageEncoding="UTF-8"%>
 <div id="wrapper">
 	<div id="header">
 		<jsp:include page="/incl/banner.jsp">
-			<jsp:param name="subtitle" value="mod009 : Java Beans and include"/>
+			<jsp:param name="subtitle" value="TEST SUBTITLE"/>
 		</jsp:include>
 	</div>
 	<div id="content-wrapper">
 		<h3>회원가입 되었습니다.</h3>
 		<jsp:useBean id="user" class="com.arang.signup.User" scope="request"/>
 		아이디 : <jsp:getProperty property="userId" name="user"/>
-		이름 : <jsp:getProperty property="userName" name="user"/>
+		이름 : <jsp:getProperty property="koreanName" name="user"/>
     </div>
 	<div id="footer">
 		<%@ include file="/incl/footer.jsp" %>

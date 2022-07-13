@@ -13,7 +13,7 @@
 	<h3> UPDATE TEST</h3>
 		<ul>
 			<li>변경 비밀번호: <input type="text" name="passwd"/></li>
-			<li>변경 닉네임: <input type="text" name="userName"/></li>
+			<li>변경 닉네임: <input type="text" name="koreanName"/></li>
 			<li>변경자의 ID: <input type="text" name="userId"/></li>			
 			<li><input type="submit" value="확인"/></li>				
 		</ul>

@@ -18,7 +18,7 @@
 		<%@ include file="/incl/footer.jsp" %>
 	</div>
 	<h3>My Page</h3>
-	${userId}님
+	${userId}님 환영합니다. 
 	<label>Last Access Time : </label> ${lastAccessTime}
 </body>
 </html>

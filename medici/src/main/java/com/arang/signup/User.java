@@ -7,12 +7,83 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String userId;
 	private String passwd;
-	private String userName;
+	private String Name;
+	private String koreanName;
+	private String englishName;
+	private String gender;
+	private String acaBackGround;
+	private String career;
+	private String soloExhi;
+	private String groupExhi;
 	private String ssn;
 	private String email;	
 	private String addr;
 	private List<User> userList;
 	
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
+	}
+
+	public String getKoreanName() {
+		return koreanName;
+	}
+
+	public void setKoreanName(String koreanName) {
+		this.koreanName = koreanName;
+	}
+
+	public String getEnglishName() {
+		return englishName;
+	}
+
+	public void setEnglishName(String englishName) {
+		this.englishName = englishName;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getAcaBackGround() {
+		return acaBackGround;
+	}
+
+	public void setAcaBackGround(String acaBackGround) {
+		this.acaBackGround = acaBackGround;
+	}
+
+	public String getCareer() {
+		return career;
+	}
+
+	public void setCareer(String career) {
+		this.career = career;
+	}
+
+	public String getSoloExhi() {
+		return soloExhi;
+	}
+
+	public void setSoloExhi(String soloExhi) {
+		this.soloExhi = soloExhi;
+	}
+
+	public String getGroupExhi() {
+		return groupExhi;
+	}
+
+	public void setGroupExhi(String groupExhi) {
+		this.groupExhi = groupExhi;
+	}
+
 	public List<User> getUserList() {
 		return userList;
 	}
@@ -43,14 +114,6 @@ public class User implements Serializable {
 
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 
 	public String getSsn() {

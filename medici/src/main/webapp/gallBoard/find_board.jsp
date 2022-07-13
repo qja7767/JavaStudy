@@ -22,7 +22,7 @@
 				<li>ID : ${test.userId}</li>			
 				<li>GalleryNAME : ${test.galleryName}</li>				
 				<li>TITLE : ${test.title}</li>
-				<li>CONTENT : ${test.boardContent}</li>
+				
 			</c:forEach>	
 	</ul>
 	<div id="footer">
