@@ -59,6 +59,39 @@ public class Bdao {
 		return dtos;
 	}
 	
+	public ArrayList<Bdto> getSearch(String searchField, String searchText){//특정한 리스트를 받아서 반환
+		  String sql ="select * from bbs WHERE "+searchField.trim();
+	      ArrayList<Bdto> list = new ArrayList<Bdto>();
+	      try {
+	    	  	Connection con = null;
+				PreparedStatement pstmt = null;	
+				ResultSet rs = null;
+	            if(searchText != null && !searchText.equals("") ){
+	                sql +=" LIKE '%"+searchText.trim()+"%' order by bbsID desc limit 10";
+	            }
+	            try {
+	            	con = dataSource.getConnection();
+					pstmt = con.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					while(rs.next()) {
+			            Bdto bbs = new Bdto();
+			            bbs.setbId(rs.getInt(1));
+			            bbs.setbTitle(rs.getString(2));
+			            bbs.setbName(rs.getString(3));
+			            bbs.setbDate(rs.getTimestamp(4));
+			            bbs.setbContent(rs.getString(5));			            
+			            bbs.setbIndent(rs.getInt(6));			            
+			            list.add(bbs);//
+			         }
+	            }finally {
+	            	dataSource.close(rs, pstmt, con);
+	            }
+	        } catch(Exception e) {
+	        	e.printStackTrace();
+	        }
+	        return list;
+	     }
+	
 	public void write(String bName, String bTitle, String bContent){
 		String sql ="INSERT INTO board(bId, bName, bTitle, bContent,"
 				+ " bHit,"
@@ -253,6 +286,6 @@ public class Bdao {
 			e.printStackTrace();
 		}
 	}
+	
 
-
-	}
+}

@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.arang.board.cmd.BCommand;
-import com.arang.board.cmd.BListCommand;
-import com.arang.board.cmd.BWriteCommand;
 import com.arang.board.cmd.BDelcommand;
+import com.arang.board.cmd.BListCommand;
 import com.arang.board.cmd.BModifyCommand;
 import com.arang.board.cmd.BReplyCommand;
 import com.arang.board.cmd.BReplyViewCommand;
 import com.arang.board.cmd.BViewCommand;
+import com.arang.board.cmd.BWriteCommand;
+
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -49,7 +50,9 @@ public class FrontController extends HttpServlet {
 		String viewPage = null;
 		
 		String uri = application.getRequestURI();
+		//주소값 컨트롤
 		String conPath = application.getContextPath();
+		//주소값 자르기
 		String cmd = uri.substring(conPath.length());
 		
 		if(cmd.equals("/write_view.do")){
@@ -89,4 +92,5 @@ public class FrontController extends HttpServlet {
 		dispat.forward(application, response);
 
 	}	
+	
 }

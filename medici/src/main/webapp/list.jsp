@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@page isELIgnored="false" %>
 <%@page import="java.util.*"%>
+<%@page import="com.arang.board.dto.*"%>
+<%@page import="com.arang.board.cmd.*"%>
+<%@page import="com.arang.board.dao.*"%>
+
+
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -33,7 +38,7 @@
 	</fieldset>
 	</form>
 	</div>
-
+	
   <table width="800" cellpadding="0" cellspacing="0" border=1>
   	<!-- 제목 -->
   	<tr>

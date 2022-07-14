@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.arang.board.dao.Bdao;
+import com.arang.board.dto.Bdto;
 
 public class BWriteCommand implements BCommand{
 	
