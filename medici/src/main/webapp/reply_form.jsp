@@ -1,15 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page isELIgnored="false" %>
+<%@page import="java.util.*"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <center>
   <hr width="500" size="1" color="green">
-  <h3> ´äº¯¾²±â</h3>
+  <h3> ë‹µë³€ì“°ê¸°</h3>
   <hr width="500" size="1" color="green">
   
 	<table width="800" cellpadding ="0" cellspacing="0" border="1">
@@ -20,27 +25,27 @@
 	 <input type="hidden" name="bIndent" value="${replyView.bIndent}">
 	 
 	 	<tr>
-			<td>¹øÈ£</td>
+			<td>ë²ˆí˜¸</td>
 			<td>${replyView.bId}</td>
 		</tr>
 		<tr>
-			<td>Á¶È¸¼ö</td>
+			<td>ì¡°íšŒìˆ˜</td>
 			<td>${replyView.bHit}</td>
 		</tr>
 		<tr>
-			<td>ÀÌ¸§</td>
+			<td>ì´ë¦„</td>
 			<td><input type="text" name="bName" value="${replyView.bName}"/></td>
 		</tr>
 		<tr>
-			<td>Á¦¸ñ</td>
+			<td>ì œëª©</td>
 			<td><input type="text" name="bTitle" value="${replyView.bTitle}"/></td>
 		</tr>
 		<tr>
-			<td>³»¿ë</td>
+			<td>ë‚´ìš©</td>
 			<td><textarea rows= "10" cols="80" name="bContent">${replyView.bContent}</textarea></td>
 		</tr>
 		<tr>
-			<td colspan = "2" align="center"><input type="submit" value="´äº¯µî·Ï"/>&nbsp;&nbsp;<a href="list.do">¸ñ·ÏÀ¸·Î</a></td>
+			<td colspan = "2" align="center"><input type="submit" value="ë‹µë³€ë“±ë¡"/>&nbsp;&nbsp;<a href="list.do">ëª©ë¡ìœ¼ë¡œ</a></td>
 		</tr>
 	 </form>
 	</table>

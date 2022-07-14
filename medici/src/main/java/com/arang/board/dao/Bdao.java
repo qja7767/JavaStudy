@@ -26,7 +26,7 @@ public class Bdao {
 	public ArrayList<Bdto> list(){
 		String sql = "SELECT bId, bName, bTitle, bContent,"
 				+ " bDate, bHit, bGroup, bStep, bIndent"
-				+ " FROM board ORDER BY bGroup DESC, bStep ASC";
+				+ " FROM board ORDER BY bId DESC, bStep ASC";
 		ArrayList<Bdto> dtos = new ArrayList<Bdto>();
 		try {
 			Connection con = null;
@@ -60,9 +60,10 @@ public class Bdao {
 	}
 	
 	public void write(String bName, String bTitle, String bContent){
-		String sql ="INSERT INTO board(bId, bName, bTitle, bContent, bHit,"
-				+ " bGroup, bStep, bIndent) "
-				+ "VALUES(0,?,?,?,0,0,0,0)";
+		String sql ="INSERT INTO board(bId, bName, bTitle, bContent,"
+				+ " bHit,"
+				+ " bGroup, bStep, bIndent)"
+				+ "VALUES(0,?,?,?,1,1,1,1)";
 		try {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -82,7 +83,7 @@ public class Bdao {
 	}
 	
 	public Bdto view(String sbId){
-		String sql = "select * from board where bId=?";
+		String sql = "SELECT * FROM board WHERE bId=?";
 		plusHit(sbId);
 		Bdto dto = null;
 		try {
@@ -209,8 +210,8 @@ public class Bdao {
 
 	public void reply(String bid, String bName, String bTitle,
 			String bContent, String bGroup, String bStep, String bIndent){
-		String sql = "INSERT INTO board(bId, bName, bTitle, bContent, bgroup, bStep, bIndent)"
-				+ "VALUES(board_seq.nextval, ?,?,?,?,?,?)";
+		String sql = "INSERT INTO board(bName, bTitle, bContent, bgroup, bStep, bIndent)"
+				+ "VALUES(?,?,?,?,?,?)";
 		try {
 			replyForm(bGroup, bStep);		
 			Connection con = null;

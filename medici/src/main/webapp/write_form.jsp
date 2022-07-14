@@ -1,32 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page isELIgnored="false" %>
+<%@page import="java.util.*"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <center>
 	<hr width="500" color="green" size="1" />
-	<h3> 臂累己窍扁</h3>
+	<h3> 旮�鞛戩劚頃橁赴</h3>
 	<hr width="500" color="green" size="1" /> 
 	<table width="800" cellpadding="0" cellspacing="0" border="1">
 		<form action="write.do" method="post">
 			<tr>
-				<td>捞抚</td>
+				<td>鞚措</td>
 				<td><input type="text" name="bName" size="20"/></td>
 			</tr>
 			<tr>
-				<td>力格</td>
+				<td>鞝滊</td>
 				<td><input type="text" name="bTitle" size="50"/></td>
 			</tr>
 			<tr>
-				<td>郴侩</td>
+				<td>雮挫毄</td>
 				<td><textarea name="bContent" rows="10" cols="80"></textarea></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit" value="殿废"/>&nbsp;&nbsp;<a href="list.do">格废栏肺</a></td>
+				<td colspan="2" align="center"><input type="submit" value="霌彪"/>&nbsp;&nbsp;<a href="list.do">氇╇鞙茧</a></td>
 			</tr>			
 		</form>
 	</table>
