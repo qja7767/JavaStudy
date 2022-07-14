@@ -28,3 +28,9 @@ pageEncoding="UTF-8"%>
 
 </body>
 </html>
+
+	<form action="login" method="post">
+		아이디 : <input type="text" name="userId"><br>
+		비밀번호 : <input type="password" name="passwd"/><br>
+		<input type="submit" value="로그인"/>		
+	</form>

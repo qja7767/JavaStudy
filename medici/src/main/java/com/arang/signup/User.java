@@ -18,19 +18,8 @@ public class User implements Serializable {
 	private String ssn;
 	private String email;	
 	private String addr;
-	private String userName;
 	private List<User> userList;
 	
-	
-	
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
 	public String getName() {
 		return Name;
 	}

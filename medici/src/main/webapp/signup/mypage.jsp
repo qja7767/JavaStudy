@@ -28,13 +28,9 @@
 		<h3>관리자 계정입니다.</h3>
 		<a href='<c:url value="/signup/select_user.do"/>'>모든가입유저조회</a><br>
         </c:if>
-       	</p>
-		
-	<jsp:include page="/list.jsp">
-  		<jsp:param name="boardData" value=""/>
-  	</jsp:include>	
-		
+       	</p>	
 	</div>
+	
 		<%@ include file="/list.jsp" %>		
 		<a href='<c:url value="/list.do"/>'>리스트</a>
 		<a href='<c:url value="/signup/logout"/>'>로그아웃</a><br>

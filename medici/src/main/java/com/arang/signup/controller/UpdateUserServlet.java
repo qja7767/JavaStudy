@@ -34,9 +34,6 @@ public class UpdateUserServlet extends HttpServlet {
 		user.setPasswd(passwd);
 		user.setKoreanName(koreanName);
 		user.setUserId(userId);
-		System.out.println(user.getUserId());
-		System.out.println(user.getKoreanName());
-		System.out.println(user.getPasswd());
 		
 		userService.updateUser(user);
 		request.setAttribute("user", user);
